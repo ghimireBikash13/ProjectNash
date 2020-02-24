@@ -17,8 +17,7 @@ import com.nash.service.PatientService;
 public class NashController {
 
 	private PatientService ps;
-	private PatientSendInfo psi;
-	private PatientListInfo pl;
+	
 
 	@RequestMapping(value = "nashhos", method = RequestMethod.GET)
 	public ModelAndView showNashPatientInfo() {
@@ -45,7 +44,7 @@ public class NashController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("send-context");
 
-		PatientInfo pi = psi.getPatientInfo(id);
+		PatientInfo pi = ps.getPatientInfo(id);
 		mv.addObject("hos", pi);
 		return mv;
 	}
@@ -56,18 +55,11 @@ public class NashController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("viewmap");
 
-		List<PatientInfo> pli = pl.getPatientInfo();
+		List<PatientInfo> pli = ps.getPatientInfo();
 		mv.addObject("list", pli);
 		return mv;
 	}
 
-	public PatientSendInfo getPsi() {
-		return psi;
-	}
-
-	public void setPsi(PatientSendInfo psi) {
-		this.psi = psi;
-	}
 
 	public PatientService getPs() {
 		return ps;
@@ -75,14 +67,6 @@ public class NashController {
 
 	public void setPs(PatientService ps) {
 		this.ps = ps;
-	}
-
-	public PatientListInfo getPl() {
-		return pl;
-	}
-
-	public void setPl(PatientListInfo pl) {
-		this.pl = pl;
 	}
 
 }
