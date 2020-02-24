@@ -9,13 +9,15 @@
 
 
 	<bean id="patientCtrl" class="com.nash.controller.NashController">
-	
-	<property name="ps" ref="pService"></property>
+
+		<property name="ps" ref="pService"></property>
+		<property name="psi" ref="psService"></property>
 
 
 	</bean>
-	
+
 	<bean id="pService" class="com.nash.service.PatientService"></bean>
+	<bean id="psService" class="com.nash.service.PatientSendInfo"></bean>
 
 
 	<bean id="viewResolver"
