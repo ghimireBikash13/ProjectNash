@@ -1,5 +1,7 @@
 package com.nash.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -7,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nash.patient.model.PatientInfo;
+import com.nash.service.PatientListInfo;
 import com.nash.service.PatientSendInfo;
 import com.nash.service.PatientService;
 
@@ -15,6 +18,7 @@ public class NashController {
 
 	private PatientService ps;
 	private PatientSendInfo psi;
+	private PatientListInfo pl;
 
 	@RequestMapping(value = "nashhos", method = RequestMethod.GET)
 	public ModelAndView showNashPatientInfo() {
@@ -46,6 +50,17 @@ public class NashController {
 		return mv;
 	}
 
+	@RequestMapping(value = "editpat", method = RequestMethod.GET)
+	public ModelAndView listPatient() throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("viewmap");
+
+		List<PatientInfo> pli = pl.getPatientInfo();
+		mv.addObject("list", pli);
+		return mv;
+	}
+
 	public PatientSendInfo getPsi() {
 		return psi;
 	}
@@ -60,6 +75,14 @@ public class NashController {
 
 	public void setPs(PatientService ps) {
 		this.ps = ps;
+	}
+
+	public PatientListInfo getPl() {
+		return pl;
+	}
+
+	public void setPl(PatientListInfo pl) {
+		this.pl = pl;
 	}
 
 }

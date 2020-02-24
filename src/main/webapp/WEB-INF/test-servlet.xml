@@ -12,12 +12,15 @@
 
 		<property name="ps" ref="pService"></property>
 		<property name="psi" ref="psService"></property>
+		<property name="pl" ref="plService"></property>
 
 
 	</bean>
 
 	<bean id="pService" class="com.nash.service.PatientService"></bean>
 	<bean id="psService" class="com.nash.service.PatientSendInfo"></bean>
+	<bean id="plService" class="com.nash.service.PatientListInfo"></bean>
+	
 
 
 	<bean id="viewResolver"
