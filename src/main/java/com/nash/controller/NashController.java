@@ -17,7 +17,6 @@ import com.nash.service.PatientService;
 public class NashController {
 
 	private PatientService ps;
-	
 
 	@RequestMapping(value = "nashhos", method = RequestMethod.GET)
 	public ModelAndView showNashPatientInfo() {
@@ -44,7 +43,7 @@ public class NashController {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("send-context");
 
-		PatientInfo pi = ps.getPatientInfo(id);
+		PatientInfo pi = ps.getPatientById(id);
 		mv.addObject("hos", pi);
 		return mv;
 	}
@@ -60,6 +59,24 @@ public class NashController {
 		return mv;
 	}
 
+	@RequestMapping(value = "editpage", method = RequestMethod.GET)
+	public ModelAndView editNashPatient(@RequestParam String id) throws Exception {
+
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("editsave-context");
+
+		PatientInfo pinf = ps.getPatientById(id);
+		mv.addObject("doedit", pinf);
+		return mv;
+
+	}
+
+	@RequestMapping(value = "editsave", method = RequestMethod.POST)
+	public String doupdatePatient(PatientInfo pal) throws Exception {
+		ps.updateNashPatient(pal);
+		return "PatientLogin";
+
+	}
 
 	public PatientService getPs() {
 		return ps;

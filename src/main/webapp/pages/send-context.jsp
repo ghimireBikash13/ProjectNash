@@ -4,9 +4,14 @@
 </head>
 <body>
 	<h2>NASH PATIENT INFORMATION</h2>
-	
+
 
 	<table>
+
+		<tr>
+			<td>Id:</td>
+			<td>${hos.id}</td>
+		</tr>
 
 		<tr>
 			<td>Name:</td>

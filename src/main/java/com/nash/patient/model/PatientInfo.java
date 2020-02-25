@@ -1,6 +1,7 @@
 package com.nash.patient.model;
 
 public class PatientInfo {
+	private String id;
 	private String name;
 	private String address;
 	private String age;
@@ -45,6 +46,14 @@ public class PatientInfo {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
